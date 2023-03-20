@@ -25,7 +25,10 @@ def check_base(num):
     candidates = []
     x, y = dest[num]
     for nx,ny in base_camp:
-        candidates.append((abs(x-nx)+abs(y-ny), ny,nx))
+        a = dfs(nx,ny,num) #최소거리는 최소거리인 이유가 있다...
+        if a == -1 :
+            continue
+        candidates.append((a, ny,nx))
     _,ny,nx= min(candidates)
     base_camp.remove((nx,ny))
     nlist[ny][nx] = 1
@@ -51,7 +54,7 @@ def dfs(x,y, num):
             if 0 <= nx < n and 0 <= ny < n and nlist[ny][nx] == 0 and visited[ny][nx]== 0:
                 visited[ny][nx]=1
                 queue.append((nx,ny,way+1))
-    return -1
+    return -1 #탈출케이스를 생각할 것
 
     
 
@@ -87,6 +90,8 @@ while time < m or len(people) != 0:
     if time < m :
         check_base(time)
     time += 1
-    print(people)
-    # print(nlist)
+    # print(people)
+    # print(dest[16])
+    # for i in nlist:
+    #     print(i)
 print(time)
