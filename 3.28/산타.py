@@ -48,6 +48,8 @@ class belt():
             return None
         else :
             temp = self.popleft()
+            if temp == None :
+                return None
             if temp.w <= w_max:
                 return temp
             else:
@@ -146,7 +148,7 @@ for i in range(q):
             new_num = (b_num+1)%len(belts)
 
             while belts[new_num] == None:
-                new_num = (b_num+1)%len(belts)
+                new_num = (new_num+1)%len(belts)
 
             for l in range(len(belt_map)):
                 if belt_map[l] == b_num:
@@ -162,6 +164,7 @@ for i in range(q):
         else :
             print(-1)
 
+# double linked list는 맞지만, 각 요소를 바로바로 접근하기 위해서는 prev와 next을 dict에 넣어서 매칭 시킨다.
 """
 t = belts[new_num].front
             print(t)

@@ -94,9 +94,6 @@ for i in range(t):
                         break
                 new_map[ny][nx].append( mon_dir)
     nmap = new_map
-    
-    for j in range(4):
-        print(nmap[j])
 
     #팩맨
     dfs(c,r)
@@ -106,14 +103,13 @@ for i in range(t):
         for k in range(4):
             if deadmon[j][k] != 0:
                 deadmon[j][k] -= 1
-        print(deadmon[j])
 
     #부활
     for x, y , dir in eggs:
         nmap[y][x].append(dir)
-    for j in range(4):
-        print(nmap[j])
-    print(c,r)
+    # for j in range(4):
+    #    print(nmap[j])
+    # print(c,r)
 ans = 0
 for j in range(4):
     for k in range(4):
